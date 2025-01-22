@@ -1,8 +1,9 @@
 import MovieItem from "./MovieItem";
 import movies from "./data/popular.json";
+import { Movie } from "./types";
 
 export default function MoviesList() {
-  const moviesItems = movies.map((movie: any, index: any) => (
+  const moviesItems = movies.map((movie: Movie) => (
     <MovieItem key={movie.id} movie={movie} />
   ));
 
