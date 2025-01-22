@@ -1,4 +1,4 @@
-import { Movie } from "./types";
+import { Movie } from "../../types";
 
 const assetsUrl = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
 

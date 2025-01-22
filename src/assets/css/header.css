@@ -1,0 +1,114 @@
+.site-header {
+  width: 100%;
+  background-color: #ddd;
+}
+  
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.filters {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.filters form {
+  display: flex;
+  width: 60%;
+  max-width: 400px;
+  position: relative;
+}
+
+.filters select{
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  background: #eeeeee;
+}
+
+.filters input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  background: #eeeeee;
+}
+
+.filters button {
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info div {
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.dd-infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+select {
+  padding: 5px 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+  
+  @media (max-width: 768px) {
+    .site-header {
+      width: 100%;
+    }
+    .search-bar {
+      display: none;
+    }
+    .logo img {
+      height: 20px;
+    }
+    .user-info .dd-infos {
+      display: none;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 10px 5px;
+    }
+  }
