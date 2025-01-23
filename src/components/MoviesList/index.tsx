@@ -6,9 +6,16 @@ interface MoviesListProps {
 }
 
 export default function MoviesList({ movies }: MoviesListProps) {
+  
   const moviesItems = movies.map((movie: Movie) => (
     <MovieItem key={movie.id} movie={movie} />
   ));
 
-  return <div className="movies-list">{moviesItems}</div>;
+  return (
+    <div className="container">
+      <main>
+        <div className="movies-list">{moviesItems}</div>
+      </main>
+    </div>
+  );
 }
