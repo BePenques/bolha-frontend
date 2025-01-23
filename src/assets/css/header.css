@@ -10,6 +10,10 @@
   padding: 10px 20px;
 }
 
+.container-filters{
+  padding: 10px;
+}
+
 .logo img {
   height: 40px;
 }
@@ -23,8 +27,7 @@
 
 .filters form {
   display: flex;
-  width: 60%;
-  max-width: 400px;
+  width: 30%;
   position: relative;
 }
 
@@ -35,6 +38,7 @@
   outline: none;
   background: #eeeeee;
 }
+
 
 .filters input {
   width: 100%;
@@ -104,11 +108,18 @@ select {
     .user-info .dd-infos {
       display: none;
     }
-    .container {
+    .filters{
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      padding: 10px 5px;
+      flex-direction: column;
+      padding: 10px 20px;
+    }
+    .filters form {    
+      width: 100%;    
+    }
+
+
+    .filters select,
+    .filters input {
+      flex: 1;
     }
   }
