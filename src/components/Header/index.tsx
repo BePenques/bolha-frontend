@@ -5,8 +5,9 @@ import SearchInput from "../SearchInput";
 interface HeaderProps {
     selectedCategory: number | 0;
     onCategoryChange: (categoryId: number) => void;
+    onFilterChange: (search: string) => void;
 }
-export default function Header({selectedCategory,onCategoryChange}: HeaderProps) {
+export default function Header({selectedCategory,onCategoryChange, onFilterChange}: HeaderProps) {
     return (
         <header className="site-header">
             <div className="container-header">   
@@ -15,7 +16,7 @@ export default function Header({selectedCategory,onCategoryChange}: HeaderProps)
                 </div>
 
                 <div className="filters">
-                    <SearchInput/>
+                    <SearchInput onChange={onFilterChange}/>
                     <CategorySelect
                         selectedCategory={selectedCategory}
                         onChange={onCategoryChange}
