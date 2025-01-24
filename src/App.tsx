@@ -1,9 +1,11 @@
 import "./assets/css/styles.css";
 import "./assets/css/header.css";
+import "./assets/css/modal.css";
 import MoviesList from "./components/MoviesList";
 import Header from "./components/Header";
 import { useState } from "react";
 import movies from "./data/popular.json";
+
 
 export default function App() {
 
@@ -55,13 +57,16 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header
-        selectedCategory={selectedCategory}
-        onCategoryChange={handleCategoryChange}
-        onFilterChange={handleFilterChange}
-        onToggleFeatured={handleToggleFeatured}
-      />
-      <MoviesList movies={filteredMovies}></MoviesList>
+     
+        <Header
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+          onFilterChange={handleFilterChange}
+          onToggleFeatured={handleToggleFeatured}
+        />
+        
+        <MoviesList movies={filteredMovies}></MoviesList>
+        
     </div>
   );
 }

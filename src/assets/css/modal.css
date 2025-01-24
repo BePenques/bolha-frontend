@@ -1,0 +1,101 @@
+.dialog-overlay {
+    background-color: rgba(0, 0, 0, 0.75); 
+    position: fixed;
+    inset: 0; 
+    z-index: 999; 
+}
+
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    position: fixed;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1000;
+}
+
+
+.dialog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+.dialog-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.dialog-description .movie-infos {
+    display: flex;
+    gap: 10px;
+}
+.dialog-description .movie-header {
+    display: flex;
+    gap: 10px;
+}
+
+.dialog-poster {
+    width: '150px';
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.dialog-close {
+    background-color: #e60b1c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .dialog-content{
+        width: 90%;
+    }
+   
+    .dialog-description .movie-infos {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .dialog-description .movie-header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .dialog-content {
+        padding: 16px; 
+        max-width: 100%; 
+    }
+
+    .dialog-title {
+        font-size: 1.25rem; 
+    }
+
+    .dialog-poster {
+        margin: auto;
+        max-width: 100px; 
+    }
+
+    .dialog-description {
+        font-size: 0.9rem; 
+    }
+}
+
