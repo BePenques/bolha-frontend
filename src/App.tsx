@@ -9,6 +9,8 @@ export default function App() {
 
   const [selectedCategory, setSelectedCategory] = useState<number | 0>(0);
   const [search, setSearch] = useState<string | ''>('');
+  const [sortByFeatured, setSortByFeatured] = useState(false);
+
 
   const handleCategoryChange = (categoryId: number) => {
     setSelectedCategory(categoryId);
@@ -18,20 +20,46 @@ export default function App() {
     setSearch(search);
   };
 
-  let filteredMovies = selectedCategory
-  ? movies.filter((movie) => movie.genre_ids.includes(selectedCategory))
-  : movies;
+  const handleToggleFeatured = () => {
+    setSortByFeatured((prev) => !prev);
+  };
 
-  filteredMovies = search
-  ? filteredMovies.filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()))
-  : filteredMovies;
-  
+  const normalizedMovies = movies.map((movie) => ({
+    ...movie, 
+    featured: movie.featured || false, 
+  }));
+
+  const filteredMovies = normalizedMovies
+    .filter((movie) => {
+      
+      if (selectedCategory) {
+        return movie.genre_ids.includes(selectedCategory);
+      }
+      return true; 
+    })
+    .filter((movie) => {
+      
+      if (search) {
+        return movie.title.toLowerCase().includes(search.toLowerCase());
+      }
+      return true; 
+    })
+    .sort((a, b) => {
+        
+      if (sortByFeatured) {
+        return Number(b.featured) - Number(a.featured);
+      }
+      return 0; 
+    });
+
+
   return (
     <div className="App">
       <Header
         selectedCategory={selectedCategory}
         onCategoryChange={handleCategoryChange}
         onFilterChange={handleFilterChange}
+        onToggleFeatured={handleToggleFeatured}
       />
       <MoviesList movies={filteredMovies}></MoviesList>
     </div>

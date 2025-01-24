@@ -1,12 +1,19 @@
 import CategorySelect from "../CategorySelect";
 import SearchInput from "../SearchInput";
+import ToggleButton from "../Toggle";
 
 interface HeaderProps {
     selectedCategory: number | 0;
     onCategoryChange: (categoryId: number) => void;
     onFilterChange: (search: string) => void;
+    onToggleFeatured: () => void;
 }
-export default function Header({selectedCategory,onCategoryChange, onFilterChange}: HeaderProps) {
+export default function Header({
+    selectedCategory,
+    onCategoryChange, 
+    onFilterChange, 
+    onToggleFeatured,
+    }: HeaderProps) {
     return (
         <header className="site-header">
             <div className="container-header">   
@@ -30,6 +37,7 @@ export default function Header({selectedCategory,onCategoryChange, onFilterChang
                         selectedCategory={selectedCategory}
                         onChange={onCategoryChange}
                     />
+                    <ToggleButton onToggle={onToggleFeatured}/>
                 </div>
             </div>
         </header>

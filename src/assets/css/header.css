@@ -12,6 +12,7 @@
 
 .container-filters{
   padding: 10px;
+  display: flex;
 }
 
 .logo img {
@@ -23,7 +24,9 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+  align-items: center;
 }
+
 
 .filters form {
   display: flex;
@@ -49,7 +52,7 @@
   background: #eeeeee;
 }
 
-.filters button {
+.filters button[type="submit"] {
   padding: 8px;
   border: none;
   cursor: pointer;
@@ -94,6 +97,56 @@ select {
   border-radius: 20px;
 }
 
+//toggle
+
+.toggle-box{
+  position: relative;
+}
+
+.toggle {
+  display: flex;
+  height: 1.5rem;
+  position: relative;
+  width: 3.4rem;
+}
+
+.toggle input {
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.toggle input::before {
+  background-color: gray;
+  border-radius: 16px;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: background-color 0.25s ease-in-out;
+  width: 100%;
+}
+
+.toggle input:checked::before {
+  background-color: red;
+}
+
+.toggle input::after {
+      background-color: #ffffff;
+      border-radius: 50%;
+      content: '';
+      height: 1rem;
+      left: 0.2rem;
+      position: absolute;
+      top: 0.2rem;
+      transition: transform 0.25s ease-in-out;
+      width: 1rem;
+  }
+
+  .toggle input:checked::after {
+    transform: translateX(2rem);
+}
   
   @media (max-width: 768px) {
     .site-header {
@@ -109,17 +162,14 @@ select {
       display: none;
     }
     .filters{
-      display: flex;
       flex-direction: column;
-      padding: 10px 20px;
+      padding: 5px 10px;
     }
     .filters form {    
       width: 100%;    
     }
-
-
     .filters select,
     .filters input {
-      flex: 1;
+      width: 100%
     }
   }
