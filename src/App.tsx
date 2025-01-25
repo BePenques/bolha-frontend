@@ -3,8 +3,10 @@ import "./assets/css/header.css";
 import "./assets/css/modal.css";
 import MoviesList from "./components/MoviesList";
 import Header from "./components/Header";
-import { useState } from "react";
-import movies from "./data/popular.json";
+import { useState, useEffect } from "react";
+// import movies from "./data/popular.json";
+import axios from "axios";
+import { Movie } from "./types";
 
 
 export default function App() {
@@ -12,6 +14,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<number | 0>(0);
   const [search, setSearch] = useState<string | ''>('');
   const [sortByFeatured, setSortByFeatured] = useState(false);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
 
   const handleCategoryChange = (categoryId: number) => {
@@ -53,6 +56,13 @@ export default function App() {
       }
       return 0; 
     });
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:1337/api/movies")
+      .then((response) => setMovies(response.data.data))
+      .catch((error) => console.error("Erro ao buscar filmes:", error));
+  }, []);
 
 
   return (
