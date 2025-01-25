@@ -59,7 +59,7 @@ export default function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1337/api/movies")
+      .get("https://wise-splendor-784428c639.strapiapp.com/api/movies")//strapi api
       .then((response) => setMovies(response.data.data))
       .catch((error) => console.error("Erro ao buscar filmes:", error));
   }, []);
