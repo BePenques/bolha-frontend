@@ -1,9 +1,11 @@
+import { Genre } from "../../types";
 import CategorySelect from "../CategorySelect";
 import SearchInput from "../SearchInput";
 import ToggleButton from "../Toggle";
 
 interface HeaderProps {
     selectedCategory: number | 0;
+    genres: Genre[];
     onCategoryChange: (categoryId: number) => void;
     onFilterChange: (search: string) => void;
     onToggleFeatured: () => void;
@@ -13,6 +15,7 @@ export default function Header({
     onCategoryChange, 
     onFilterChange, 
     onToggleFeatured,
+    genres
     }: HeaderProps) {
     return (
         <header className="site-header">
@@ -36,6 +39,7 @@ export default function Header({
                     <CategorySelect
                         selectedCategory={selectedCategory}
                         onChange={onCategoryChange}
+                        genres={genres}
                     />
                     <ToggleButton onToggle={onToggleFeatured}/>
                 </div>

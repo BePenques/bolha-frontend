@@ -15,3 +15,9 @@ export interface Movie {
     vote_count: number;
     featured?: boolean;
 }
+
+export interface Genre {
+    id: number,
+    name: string,
+
+}

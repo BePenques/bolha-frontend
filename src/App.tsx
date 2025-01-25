@@ -5,8 +5,9 @@ import MoviesList from "./components/MoviesList";
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
 // import movies from "./data/popular.json";
+import genres  from "./data/genres.json";
 import axios from "axios";
-import { Movie } from "./types";
+import { Genre, Movie } from "./types";
 
 
 export default function App() {
@@ -15,6 +16,8 @@ export default function App() {
   const [search, setSearch] = useState<string | ''>('');
   const [sortByFeatured, setSortByFeatured] = useState(false);
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [moviesGenres, setMoviesGenres] = useState<Genre[]>([]);
+ 
 
 
   const handleCategoryChange = (categoryId: number) => {
@@ -64,6 +67,22 @@ export default function App() {
       .catch((error) => console.error("Erro ao buscar filmes:", error));
   }, []);
 
+  useEffect(() => {
+  
+    const uniqueGenres = Array.from(
+      new Set(
+        movies.flatMap((movie) => movie.genre_ids)
+      )
+    );
+    const categoriesFiltered = genres.filter((category) =>
+      uniqueGenres.includes(category.id)
+    );
+  
+    setMoviesGenres(categoriesFiltered);
+
+  }, [movies, genres]);
+  
+
 
   return (
     <div className="App">
@@ -73,6 +92,7 @@ export default function App() {
           onCategoryChange={handleCategoryChange}
           onFilterChange={handleFilterChange}
           onToggleFeatured={handleToggleFeatured}
+          genres={moviesGenres}
         />
         
         <MoviesList movies={filteredMovies}></MoviesList>
